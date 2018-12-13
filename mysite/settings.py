@@ -25,7 +25,7 @@ SECRET_KEY = '(%d)@8%lkbgr-3_i47*ou#@8ycl6*os8-cr6lbgq$6o%i_4f=3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['Alerzi88.pythonanywhere.com','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['*'] 
 
 
 # Application definition
@@ -41,10 +41,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 ]
-
-LOGIN_REDIRECT_URL = '/'
-#ACCOUNT_DEFAULT_HTTP_PROTOCOL ="https"
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,7 +58,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,13 +70,6 @@ TEMPLATES = [
         },
     },
 ]
-
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-
-AUTHENTICATION_BACKENDS = {
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-}
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -133,15 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-CORS_ALLOW_CREDENTIALS = True
 
-CORS_ORIGIN_WHITELIST = (
-    'http://127.0.0.1:8887/'
-)
-CORS_ORIGIN_REGEX_WHITELIST = (
-    'http://127.0.0.1:8887/'
-)
-MEDIA_URL ='/media/'
+CORS_ORIGIN_WHITELIST = 'http://127.0.0.1:8000/'
 
-MEDIA_ROOT =os.path.join(BASE_DIR, 'media')
+
