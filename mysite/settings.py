@@ -25,7 +25,7 @@ SECRET_KEY = '(%d)@8%lkbgr-3_i47*ou#@8ycl6*os8-cr6lbgq$6o%i_4f=3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['Alerzi88.pythonanywhere.com']
+ALLOWED_HOSTS = ['Alerzi88.pythonanywhere.com','127.0.0.1','localhost']
 
 
 # Application definition
@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 ]
+
+LOGIN_REDIRECT_URL = '/'
+#ACCOUNT_DEFAULT_HTTP_PROTOCOL ="https"
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -58,7 +62,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,6 +74,13 @@ TEMPLATES = [
         },
     },
 ]
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+
+AUTHENTICATION_BACKENDS = {
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+}
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
